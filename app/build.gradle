@@ -31,4 +31,6 @@ android {
 dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation fileTree(dir: "/Users/toto/Project/myProject/libcocos2dx/java/libs", include: ['*.jar'])
+    implementation project(':libcocos2dx')
 }

@@ -1,5 +1,3 @@
-rootProject.name = "NativeIncludeCocos"
-include ':app'
 include ':NativeIncludeCocos'
 project(':NativeIncludeCocos').projectDir = new File(settingsDir, 'app')
 include ':libcocos2dx'
