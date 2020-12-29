@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id 'com.android.application'
 }
@@ -14,17 +16,132 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            if (project.hasProperty("PROP_USE_CMAKE")) {
+                cmake {
+                    targets "cocos2djs"
+                    arguments "-DANDROID_STL=c++_static", "-DANDROID_TOOLCHAIN=clang", "-DANDROID_ARM_NEON=TRUE", "-DCOCOS_X_ROOT=/Applications/CocosCreator/Creator3D/1.2.0/CocosCreator3D.app/Contents/Resources/resources/3d/cocos2d-x-lite"
+                    cppFlags "-frtti -fexceptions -fsigned-char"
+                    abiFilters.addAll(PROP_APP_ABI.split(':').collect{it as String})
+                }
+            } else {
+                ndkBuild {
+                    if (!project.hasProperty("PROP_NDK_MODE") || PROP_NDK_MODE.compareTo('none') != 0) {
+                        // skip the NDK Build step if PROP_NDK_MODE is none
+                        targets 'cocos2djs'
+                        arguments 'NDK_TOOLCHAIN_VERSION=clang'
+
+                        def module_paths = [project.file("/Applications/CocosCreator/Creator3D/1.2.0/CocosCreator3D.app/Contents/Resources/resources/3d/cocos2d-x-lite"),
+                                            project.file("/Applications/CocosCreator/Creator3D/1.2.0/CocosCreator3D.app/Contents/Resources/resources/3d/cocos2d-x-lite/cocos"),
+                                            project.file("/Applications/CocosCreator/Creator3D/1.2.0/CocosCreator3D.app/Contents/Resources/resources/3d/cocos2d-x-lite/external")]
+                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                            arguments 'NDK_MODULE_PATH=' + module_paths.join(";")
+                        }
+                        else {
+                            arguments 'NDK_MODULE_PATH=' + module_paths.join(':')
+                        }
+
+                        arguments '-j' + Runtime.runtime.availableProcessors()
+                        abiFilters.addAll(PROP_APP_ABI.split(':').collect{it as String})
+                    }
+                }
+            }
+        }
+    }
+
+    sourceSets.main {
+
+        sourceSets.all{set ->
+            println "${set.name}的文件是 ${set.jniLibs.srcDirs}"
+        }
+    }
+
+    externalNativeBuild {
+        if (project.hasProperty("PROP_USE_CMAKE")) {
+            cmake {
+                path "../../CMakeLists.txt"
+            }
+        } else {
+            ndkBuild {
+                if (!project.hasProperty("PROP_NDK_MODE") || PROP_NDK_MODE.compareTo('none') != 0) {
+                    // skip the NDK Build step if PROP_NDK_MODE is none
+                    path "jni/Android.mk"
+                }
+            }
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (project.hasProperty("RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+            }
+
+            externalNativeBuild {
+                ndkBuild {
+                    arguments 'NDK_DEBUG=0'
+                }
+            }
+        }
+
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            externalNativeBuild {
+                ndkBuild {
+                    arguments 'NDK_DEBUG=1'
+                }
+            }
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+android.applicationVariants.all { variant ->
+    // delete previous files first
+    delete "${buildDir}/intermediates/merged_assets/${variant.dirName}"
+
+    variant.mergeAssets.doLast {
+        def sourceDir = "${buildDir}/../../../../.."
+
+        copy {
+            from "${sourceDir}/res"
+            into "${outputDir}/res"
+        }
+
+        copy {
+            from "${sourceDir}/subpackages"
+            into "${outputDir}/subpackages"
+        }
+
+        copy {
+            from "${sourceDir}/src"
+            into "${outputDir}/src"
+        }
+
+        copy {
+            from "${sourceDir}/jsb-adapter"
+            into "${outputDir}/jsb-adapter"
+        }
+
+        copy {
+            from "${sourceDir}/main.js"
+            from "${sourceDir}/project.json"
+            into outputDir
+        }
     }
 }
 
