@@ -4,13 +4,24 @@ package com.example.nativeincludecocos;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+
+import com.example.nativeincludecocos.utils.UriUtils;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 import org.cocos2dx.javascript.SDKWrapper;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
-public class MainActivity  extends Cocos2dxActivity {
+public class MainActivity extends Cocos2dxActivity {
+    private FrameLayout frameLayout;
+    private SimpleExoPlayer simpleExoPlayer;
+    private StyledPlayerView styledPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +35,19 @@ public class MainActivity  extends Cocos2dxActivity {
             return;
         }
         // DO OTHER INITIALIZATION BELOW
+        setContentView(R.layout.activity_main);
+        frameLayout = findViewById(R.id.fragment_container);
+        frameLayout.addView(mFrameLayout);
+        simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
+        styledPlayerView = findViewById(R.id.player_view);
         SDKWrapper.getInstance().init(this);
+        Uri uri = UriUtils.resConvertUri(this, R.raw.liveme);
+        MediaItem item = MediaItem.fromUri(uri);
+        styledPlayerView.setPlayer(simpleExoPlayer);
+        simpleExoPlayer.setRepeatMode(ExoPlayer.REPEAT_MODE_ONE);
+        simpleExoPlayer.setMediaItem(item);
+        simpleExoPlayer.prepare();
+        simpleExoPlayer.play();
 
     }
 
