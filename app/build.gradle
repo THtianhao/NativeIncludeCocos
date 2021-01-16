@@ -115,7 +115,7 @@ android.applicationVariants.all { variant ->
     delete "${buildDir}/intermediates/merged_assets/${variant.dirName}"
 
     variant.mergeAssets.doLast {
-        def sourceDir = "/Users/toto/Project/MyProject/stuff/build/android"
+        def sourceDir = "/Users/toto/Project/MyProject/CocosDemo/build/android"
 
         copy {
             from "${sourceDir}/res"
