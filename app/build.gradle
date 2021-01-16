@@ -115,7 +115,7 @@ android.applicationVariants.all { variant ->
     delete "${buildDir}/intermediates/merged_assets/${variant.dirName}"
 
     variant.mergeAssets.doLast {
-        def sourceDir = "/Users/toto/Project/openResource/game/3d/stuff/build/android"
+        def sourceDir = "/Users/toto/Project/MyProject/stuff/build/android"
 
         copy {
             from "${sourceDir}/res"
@@ -149,6 +149,6 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.exoplayer:exoplayer:2.12.3'
-    implementation fileTree(dir: "/Users/toto/Project/openResource/myProject/CocosLib/libcocos2dx", include: ['*.jar'])
+    implementation fileTree(dir: "/Users/toto/Project/MyProject/CocosLib/libcocos2dx", include: ['*.jar'])
     implementation project(':libcocos2dx')
 }
