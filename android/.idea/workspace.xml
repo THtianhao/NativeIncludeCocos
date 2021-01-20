@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel_2_xl" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5cdd5b0c-f70b-40fb-b9bf-252d2b4a9a94" name="Default Changelist" comment="处理安装不上的问题">
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nativeincludecocos/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nativeincludecocos/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/cocos2dx/javascript/AppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/cocos2dx/javascript/AppActivity.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@98895a364d4f47334c]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="NativeIncludeCocos" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="NativeIncludeCocos" type="f1a62948:ProjectNode" />
+                <item name="NativeIncludeCocos" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="NativeIncludeCocos" type="f1a62948:ProjectNode" />
+                <item name="NativeIncludeCocos" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="NativeIncludeCocos" type="f1a62948:ProjectNode" />
+                <item name="NativeIncludeCocos" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1n67S1SE7UUoQooqJIr5vwHF9Ty" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="SerialNumber@98895a364d4f47334c" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-15T13:23:33.509885Z" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="android-custom-view/Users/toto/Project/openResource/myProject/CocosLib/java/src/org/cocos2dx/lib/Cocos2dxGLSurfaceView.java_SELECTED" value="Cocos2dxGLSurfaceView" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1610698695542" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.NativeIncludeCocos">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NativeIncludeCocos" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="NativeIncludeCocos.NativeIncludeCocos" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NativeIncludeCocos:app [assembleDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assembleDebug" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.NativeIncludeCocos:app [assembleDebug]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5cdd5b0c-f70b-40fb-b9bf-252d2b4a9a94" name="Default Changelist" comment="" />
+      <created>1610698682911</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610698682911</updated>
+    </task>
+    <task id="LOCAL-00001" summary="二次开发">
+      <created>1610716718233</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610716718233</updated>
+    </task>
+    <task id="LOCAL-00002" summary="处理安装不上的问题">
+      <created>1610718006510</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610718006510</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="二次开发" />
+    <MESSAGE value="处理安装不上的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="处理安装不上的问题" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="407" y="126" key="CommitChangelistDialog2" timestamp="1611134324944">
+      <screen x="0" y="23" width="1680" height="987" />
+    </state>
+    <state x="407" y="126" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@0.23.1680.987" timestamp="1611134324944" />
+    <state x="2145" y="133" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610718006312" />
+    <state x="336" y="127" key="DiffContextDialog" timestamp="1611134324719">
+      <screen x="0" y="23" width="1680" height="987" />
+    </state>
+    <state x="-1481" y="134" key="DiffContextDialog/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1610702640383" />
+    <state x="336" y="127" key="DiffContextDialog/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@0.23.1680.987" timestamp="1611134324719" />
+    <state width="819" height="176" key="GridCell.Tab.0.bottom" timestamp="1611150103875">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="819" height="176" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611150103875" />
+    <state width="1878" height="290" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610717979997" />
+    <state width="819" height="176" key="GridCell.Tab.0.center" timestamp="1611150103869">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="819" height="176" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611150103869" />
+    <state width="1878" height="290" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610717979996" />
+    <state width="819" height="176" key="GridCell.Tab.0.left" timestamp="1611150103868">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="819" height="176" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611150103868" />
+    <state width="1878" height="290" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610717979996" />
+    <state width="819" height="176" key="GridCell.Tab.0.right" timestamp="1611150103873">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="819" height="176" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611150103873" />
+    <state width="1878" height="290" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610717979996" />
+    <state x="-1183" y="249" key="RollbackChangesDialog" timestamp="1610702640516">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1183" y="249" key="RollbackChangesDialog/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1610702640516" />
+    <state x="331" y="147" key="SettingsEditor" timestamp="1611132959251">
+      <screen x="0" y="23" width="1680" height="987" />
+    </state>
+    <state x="331" y="147" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@0.23.1680.987" timestamp="1611132959251" />
+    <state x="2240" y="297" key="Vcs.Push.Dialog.v2" timestamp="1610718007961">
+      <screen x="1680" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2240" y="297" key="Vcs.Push.Dialog.v2/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610718007961" />
+    <state x="2350" y="373" key="com.android.tools.idea.run.deployment.SelectMultipleDevicesDialog" timestamp="1610716897192">
+      <screen x="1680" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2350" y="373" key="com.android.tools.idea.run.deployment.SelectMultipleDevicesDialog/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610716897192" />
+    <state x="-1317" y="280" width="1286" height="735" key="find.popup" timestamp="1611138530371">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1317" y="280" width="1286" height="735" key="find.popup/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611138530371" />
+    <state x="528" y="263" width="1125" height="490" key="find.popup/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@0.23.1680.987" timestamp="1610699846339" />
+    <state x="2283" y="280" width="1286" height="735" key="find.popup/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@1680.23.1920.1057" timestamp="1610717821166" />
+    <state x="-1388" y="264" width="670" height="676" key="search.everywhere.popup" timestamp="1611138727510">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1388" y="264" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1057/0.23.1680.987/1680.23.1920.1057@-1920.23.1920.1057" timestamp="1611138727510" />
+  </component>
+</project>

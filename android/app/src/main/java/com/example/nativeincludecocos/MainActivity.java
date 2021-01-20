@@ -1,38 +1,28 @@
-/****************************************************************************
-Copyright (c) 2015-2016 Chukong Technologies Inc.
-Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
-http://www.cocos2d-x.org
+package com.example.nativeincludecocos;
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.PixelFormat;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.FrameLayout;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-****************************************************************************/
-package org.cocos2dx.javascript;
+import com.example.nativeincludecocos.utils.UriUtils;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
+import org.cocos2dx.javascript.SDKWrapper;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
-import android.os.Bundle;
-
-import android.content.Intent;
-import android.content.res.Configuration;
-
-public class AppActivity extends Cocos2dxActivity {
+public class MainActivity extends Cocos2dxActivity {
+    private FrameLayout frameLayout;
+    private SimpleExoPlayer simpleExoPlayer;
+    private StyledPlayerView styledPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +36,30 @@ public class AppActivity extends Cocos2dxActivity {
             return;
         }
         // DO OTHER INITIALIZATION BELOW
+        setContentView(R.layout.activity_main);
+        frameLayout = findViewById(R.id.fragment_container);
+        frameLayout.addView(mFrameLayout);
+        simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
+        styledPlayerView = findViewById(R.id.player_view);
         SDKWrapper.getInstance().init(this);
+        Uri uri = UriUtils.resConvertUri(this, R.raw.liveme);
+        MediaItem item = MediaItem.fromUri(uri);
+        styledPlayerView.setPlayer(simpleExoPlayer);
+        simpleExoPlayer.setRepeatMode(ExoPlayer.REPEAT_MODE_ONE);
+        simpleExoPlayer.setMediaItem(item);
+        simpleExoPlayer.prepare();
+        simpleExoPlayer.play();
 
     }
-    
+
     @Override
     public Cocos2dxGLSurfaceView onCreateView() {
         Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
         // TestCpp should create stencil buffer
-        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+//        glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+        glSurfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 8);
+        glSurfaceView.getHolder().setFormat(PixelFormat.RGBA_8888);
+        glSurfaceView.setZOrderMediaOverlay(true);
         SDKWrapper.getInstance().setGLSurfaceView(glSurfaceView, this);
 
         return glSurfaceView;
@@ -104,7 +109,7 @@ public class AppActivity extends Cocos2dxActivity {
         super.onStop();
         SDKWrapper.getInstance().onStop();
     }
-        
+
     @Override
     public void onBackPressed() {
         SDKWrapper.getInstance().onBackPressed();
