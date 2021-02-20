@@ -51,6 +51,7 @@ android {
     }
 
     sourceSets.main {
+//        jniLibs.srcDirs = ['libs']
 
         sourceSets.all{set ->
             println "${set.name}的文件是 ${set.jniLibs.srcDirs}"
@@ -100,6 +101,9 @@ android {
                     arguments 'NDK_DEBUG=1'
                 }
             }
+        }
+        ndk {
+//            ndkVersion '21.4.7075529'
         }
     }
 

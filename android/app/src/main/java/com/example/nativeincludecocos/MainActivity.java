@@ -7,26 +7,38 @@ import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.example.nativeincludecocos.utils.UriUtils;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.StyledPlayerControlView;
 import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 import org.cocos2dx.javascript.SDKWrapper;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
+import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
 
 public class MainActivity extends Cocos2dxActivity {
+
     private FrameLayout frameLayout;
     private SimpleExoPlayer simpleExoPlayer;
+    private StyledPlayerControlView styledPlayerControlView;
     private StyledPlayerView styledPlayerView;
+    private Button button;
+    private static MainActivity app = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.loadLibrary("cocos2djs");
+
+        app = this;
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
         if (!isTaskRoot()) {
             // Android launched another instance of the root activity into an existing task
@@ -41,6 +53,7 @@ public class MainActivity extends Cocos2dxActivity {
         frameLayout.addView(mFrameLayout);
         simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
         styledPlayerView = findViewById(R.id.player_view);
+        button = findViewById(R.id.button);
         SDKWrapper.getInstance().init(this);
         Uri uri = UriUtils.resConvertUri(this, R.raw.liveme);
         MediaItem item = MediaItem.fromUri(uri);
@@ -49,7 +62,20 @@ public class MainActivity extends Cocos2dxActivity {
         simpleExoPlayer.setMediaItem(item);
         simpleExoPlayer.prepare();
         simpleExoPlayer.play();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    // 一定要在 GL 线程中执行
+                    app.runOnGLThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Cocos2dxJavascriptJavaBridge.evalString("globalThis.window.tscall.tscall.change()");
+                        }
+                    });
+            }
+        });
     }
 
     @Override
@@ -138,5 +164,25 @@ public class MainActivity extends Cocos2dxActivity {
     protected void onStart() {
         SDKWrapper.getInstance().onStart();
         super.onStart();
+    }
+
+
+    public static void showButton() {
+        app.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                app.button.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    public static void hideButton() {
+        app.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("toto","button");
+                app.button.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 }
