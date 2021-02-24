@@ -150,9 +150,12 @@ android.applicationVariants.all { variant ->
 }
 
 dependencies {
+    implementation "androidx.lifecycle:lifecycle-runtime:2.3.0"
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.exoplayer:exoplayer:2.12.3'
     implementation fileTree(dir: "/Users/toto/Project/MyProject/CocosLib/libcocos2dx", include: ['*.jar'])
     implementation project(':libcocos2dx')
+
+    implementation 'org.jetbrains:annotations:16.0.2'
 }
