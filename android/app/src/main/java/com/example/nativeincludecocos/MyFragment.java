@@ -26,7 +26,7 @@ public class MyFragment extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment, container, false);
         FrameLayout frameLayout = view.findViewById(R.id.my_framelayout);
-        frameLayout.addView(MainActivity.app.mFrameLayout);
+        frameLayout.addView(MainActivity.cocosPresent.mFrameLayout);
         return view;
 
     }

@@ -1,13 +1,10 @@
 package com.example.nativeincludecocos;
 
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +14,7 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nativeincludecocos.present.CocosLifecycle;
+import com.example.nativeincludecocos.present.CocosPresent;
 import com.example.nativeincludecocos.utils.UriUtils;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
@@ -26,8 +23,9 @@ import com.google.android.exoplayer2.ui.StyledPlayerControlView;
 import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 import org.cocos2dx.javascript.SDKWrapper;
-import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
+
+import java.util.Observable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
     private StyledPlayerControlView styledPlayerControlView;
     private StyledPlayerView styledPlayerView;
     private Button button;
-    public static CocosLifecycle app = null;
+    public static CocosPresent cocosPresent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         System.loadLibrary("cocos2djs");
-        app = new CocosLifecycle(this);
-        app.onCreate();
-        //        getLifecycle().addObserver(app);
+        cocosPresent = new CocosPresent(this);
+        cocosPresent.onCreate();
+//                getLifecycle().addObserver(new XXXObservable);
 
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
         if (!isTaskRoot()) {
@@ -60,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.fragment_container);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        MyFragment fragment = new MyFragment();
-        transaction.add(R.id.fragment_container, fragment).commit();
-//        frameLayout.addView(app.mFrameLayout);
+        transaction.add(R.id.fragment_container, new MyFragment()).commit();
+//        frameLayout.addView(cocosPresent.mFrameLayout);
         simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
         styledPlayerView = findViewById(R.id.player_view);
         button = findViewById(R.id.button);
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 一定要在 GL 线程中执行
-                app.runOnGLThread(new Runnable() {
+                cocosPresent.runOnGLThread(new Runnable() {
                     @Override
                     public void run() {
                         Cocos2dxJavascriptJavaBridge.evalString("globalThis.window.tscall.tscall.change()");
@@ -92,18 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        app.paused = false;
         super.onResume();
-        app.onResume();
+        cocosPresent.onResume();
         SDKWrapper.getInstance().onResume();
 
     }
 
     @Override
     protected void onPause() {
-        app.paused = true;
         super.onPause();
-        app.onPause();
+        cocosPresent.onPause();
         SDKWrapper.getInstance().onPause();
 
     }
@@ -111,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        app.onDestory();
+        cocosPresent.onDestory();
         SDKWrapper.getInstance().onDestroy();
 
     }
@@ -119,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        app.onActivityResult(resultCode, resultCode, data);
+        cocosPresent.onActivityResult(resultCode, resultCode, data);
         SDKWrapper.getInstance().onActivityResult(requestCode, resultCode, data);
     }
 
@@ -174,11 +169,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        app.onWindowFocusChanged(hasFocus);
+        cocosPresent.onWindowFocusChanged(hasFocus);
     }
 
     public static void showButton() {
-        app.mActivity.runOnUiThread(new Runnable() {
+        cocosPresent.mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
 //                app.button.setVisibility(View.VISIBLE);
@@ -187,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void hideButton() {
-        app.mActivity.runOnUiThread(new Runnable() {
+        cocosPresent.mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Log.d("toto", "button");

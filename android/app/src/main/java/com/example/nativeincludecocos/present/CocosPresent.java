@@ -20,9 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
 
 import com.example.nativeincludecocos.MainActivity;
 
@@ -43,12 +41,11 @@ import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLDisplay;
 
-public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2dxHelperListener {
+public class CocosPresent implements LifecycleObserver, Cocos2dxHelper.Cocos2dxHelperListener {
 
-    private static final String TAG = CocosLifecycle.class.getName();
+    private static final String TAG = CocosPresent.class.getName();
 
     public Activity mActivity = null;
-    public MainActivity sActivity = null;
 
     public FrameLayout mFrameLayout = null;
 
@@ -71,9 +68,8 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
     private TextView mGameInfoTextView_1;
     private TextView mGameInfoTextView_2;
 
-    public CocosLifecycle(MainActivity mActivity) {
+    public CocosPresent(Activity mActivity) {
         this.mActivity = mActivity;
-        this.sActivity = mActivity;
     }
 
     public void onCreate() {
@@ -116,6 +112,7 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
     }
 
     public void onResume() {
+        paused = false;
         Log.d(TAG, "onResume() called");
         if (gainAudioFocus)
             Cocos2dxAudioFocusManager.registerAudioFocusListener(mActivity);
@@ -124,6 +121,7 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
     }
 
     public void onPause() {
+        paused = false;
         Log.d(TAG, "onPause() called");
         if (gainAudioFocus)
             Cocos2dxAudioFocusManager.unregisterAudioFocusListener(mActivity);
@@ -189,7 +187,7 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
             return defaultValue;
         }
 
-        class ConfigValue implements Comparable<CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue> {
+        class ConfigValue implements Comparable<CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue> {
             public EGLConfig config = null;
             public int[] configAttribs = null;
             public int value = 0;
@@ -239,7 +237,7 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
             }
 
             @Override
-            public int compareTo(CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue another) {
+            public int compareTo(CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue another) {
                 if (value < another.value) {
                     return -1;
                 } else if (value > another.value) {
@@ -283,16 +281,16 @@ public class CocosLifecycle implements LifecycleObserver, Cocos2dxHelper.Cocos2d
             eglChooseResult = egl.eglChooseConfig(display, EGLV2attribs, null, 0, numConfigs);
             if (eglChooseResult && numConfigs[0] > 0) {
                 int num = numConfigs[0];
-                CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue[] cfgVals = new CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue[num];
+                CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue[] cfgVals = new CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue[num];
 
                 // convert all config to ConfigValue
                 configs = new EGLConfig[num];
                 egl.eglChooseConfig(display, EGLV2attribs, configs, num, numConfigs);
                 for (int i = 0; i < num; ++i) {
-                    cfgVals[i] = new CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue(egl, display, configs[i]);
+                    cfgVals[i] = new CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue(egl, display, configs[i]);
                 }
 
-                CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue e = new CocosLifecycle.Cocos2dxEGLConfigChooser.ConfigValue(configAttribs);
+                CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue e = new CocosPresent.Cocos2dxEGLConfigChooser.ConfigValue(configAttribs);
                 // bin search
                 int lo = 0;
                 int hi = num;
